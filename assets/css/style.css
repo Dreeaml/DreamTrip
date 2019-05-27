@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+/*font-family: 'Roboto', sans-serif;*/
+
+/*------------------------------------------------------Navbar section*/
+.bg-navbar{
+    background-color: #1d0a2f;
+    border: 15px;
+}
+
+.navbar-brand, .navbar-light {
+    font-family: 'Roboto';
+    font-size:30px;
+    font-weight: 800;
+    color:#d60651;
+}
+.navbar-item{
+    font-family: sans-serif;
+    padding-right:25px;
+    font-size: 20px;
+    color: white;
+    font-weight: 600;
+    padding-top: 15px;
+}
+/*------------------------------------------------------filters section*/
+#filters{
+    padding: 10px;
+    background-color:#1d0a2f; 
+}
+
+.input-boxes{
+    border-radius: 5px;
+    padding: 10px;
+    color:#757575;
+    background-color: #d6d3d3;
+    text-align: left;
+    width: 100%;
+    height: 50px;
+}
+
+.radio-form{
+    color:white;
+    font-size: 15px;
+    font-style: sans-serif; 
+}
+
+.btn-default{
+   background-color: #d60651;
+   color:white;
+   font-weight:500;
+   width: 100%;
+   height: 50px;
+}
+/*------------------------------------------------------map section*/
+#map {
+    min-height: 430px;
+    padding: 0;
+}
+#map-section{ 
+    background: -webkit-linear-gradient(#1d0a2f, #a7a7a7);
+    background: -moz-linear-gradient(#1d0a2f, #a7a7a7);
+    background: -o-linear-gradient(#1d0a2f, #a7a7a7);
+    background: linear-gradient(#1d0a2f, #a7a7a7);
+}
+/*------------------------------------------------------results section*/
+#info-content .title {
+    font-weight: bold;
+}
+
+#info-content {
+    display: none;
+}
+
+#results-heading{
+    background: linear-gradient( #a7a7a7, #ffffff);
+    width: 100%;
+    color: #4b4b4b;
+    text-align: center;
+    font-family: 'Roboto';
+    font-size: 25px;
+    font-weight: 800;
+    padding-bottom: 5px;
+    padding-top:15px;
+}
+
+#listing{
+    margin-bottom: 25px;
+    width: 100%;
+    overflow: auto;
+    top: 0px;
+    cursor: pointer;
+}
+.placeIcon {
+  width: 20px;
+  height: 34px;
+  margin: 4px;
+}
+.hotelIcon {
+  width: 24px;
+  height: 24px;
+  color: green;
+}
+#resultsTable {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#rating {
+  font-size: 13px;
+  font-family: sans-serif;
+}
+.iw_table_row {
+  height: 18px;
+}
+.iw_attribute_name {
+  font-weight: bold;
+  text-align: right;
+}
+.iw_table_icon {
+  text-align: right;
+}
+/*------------------------------------------------------footer*/
+#footer-details{
+    background-color: #99979a6e;
+    padding: 0;
+    margin: 0;
+    min-height: 100px;
+    padding-top: 15px;
+}
+
+#author-rights{
+    text-align: center;
+    color: #3a3a3a;
+    font-size: 15px;
+    font-family: Roboto;
+    padding-top: 10px;
+    font-weight: 500;
+}
+
+#social-links {
+    margin-left: 15%;
+}
+
+#social-links span a {
+    font-size: 18px;
+    color:#d60651;
+    margin-left: 15%;
+    transition: all 0.35s, ease-in-out;
+    -moz-transition: all 0.35s, ease-in-out;
+    -webkit-transition: all 0.35s, ease-in-out;
+    -o-transition: all 0.35s, ease-in-out;
+}
