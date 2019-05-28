@@ -74,7 +74,6 @@ function reset() {
 }
 
 function initMap() {
-    $("#hotelRadio").prop("checked", true);
     map = new google.maps.Map(document.getElementById('map'), {
       zoom: countries['us'].zoom,
       center: countries['us'].center,
@@ -100,31 +99,32 @@ function initMap() {
 
     autocomplete.addListener('place_changed', onPlaceChanged);
      
-    document.getElementById('hotelRadio').addEventListener('change', onPlaceChanged);
-    document.getElementById('foodRadio').addEventListener('change', onPlaceChanged); 
-    document.getElementById('attractionsRadio').addEventListener('change', onPlaceChanged);
-    document.getElementById('transportRadio').addEventListener('change', onPlaceChanged);
-    document.getElementById('healthcareRadio').addEventListener('change', onPlaceChanged);
+    document.getElementById('hotelOption').addEventListener('change', onPlaceChanged);
+    document.getElementById('foodOption').addEventListener('change', onPlaceChanged); 
+    document.getElementById('attractionsOption').addEventListener('change', onPlaceChanged);
+    document.getElementById('transportOption').addEventListener('change', onPlaceChanged);
+    document.getElementById('healthcareOption').addEventListener('change', onPlaceChanged);
 
     // Add a DOM event listener to react when the user selects a country.
     document.getElementById('country').addEventListener(
-        'change', setAutocompleteCountry);
-  }
+      'change', setAutocompleteCountry);
+    }
 
 // When the user selects a city, get the place details for the city and
 // zoom the map in on the city.
 function onPlaceChanged(event) {
-    if ($("#hotelRadio"). is (':checked')){
-        var place = autocomplete.getPlace();
-        if (place.geometry) {
-          map.panTo(place.geometry.location);
-          map.setZoom(15);
-          searchHotel();
-        } else {
-          document.getElementById('autocomplete').placeholder = 'Enter a city';
-        }
+    if ($("#hotelOption").is (':selected')){
+      var place = autocomplete.getPlace();
+      if (place.geometry) {
+        map.panTo(place.geometry.location);
+        map.setZoom(15);
+        searchHotel();
+      } else {
+        document.getElementById('autocomplete').placeholder = 'Enter a city';
+      }
     }
-    else if ($("#foodRadio"). is (':checked')){
+    else if ($("#foodOption").is(':selected')){
+      console.log("food is selected")
         var place = autocomplete.getPlace();
         if (place.geometry) {
           map.panTo(place.geometry.location);
@@ -134,17 +134,17 @@ function onPlaceChanged(event) {
           document.getElementById('autocomplete').placeholder = 'Enter a city';
         }
     }
-    else if ($("#attractionsRadio"). is (':checked')){
-        var place = autocomplete.getPlace();
-        if (place.geometry) {
-          map.panTo(place.geometry.location);
-          map.setZoom(15);
-          searchAttraction();
-        } else {
-          document.getElementById('autocomplete').placeholder = 'Enter a city';
-        }
+    else if ($("#attractionsOption").is(':selected')){
+      var place = autocomplete.getPlace();
+      if (place.geometry) {
+        map.panTo(place.geometry.location);
+        map.setZoom(15);
+        searchAttraction();
+      } else {
+        document.getElementById('autocomplete').placeholder = 'Enter a city';
+      }
     }
-    else if ($("#transportRadio"). is (':checked')){
+    else if ($("#transportOption").is(':selected')){
         var place = autocomplete.getPlace();
         if (place.geometry) {
           map.panTo(place.geometry.location);
@@ -154,7 +154,7 @@ function onPlaceChanged(event) {
           document.getElementById('autocomplete').placeholder = 'Enter a city';
         }
     }
-    else if ($("#healthcareRadio"). is (':checked')){
+    else if ($("#healthcareOption").is(':selected')){
         var place = autocomplete.getPlace();
         if (place.geometry) {
           map.panTo(place.geometry.location);

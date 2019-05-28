@@ -8,30 +8,35 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon.png">
     <!--FontAwesome-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <!--bootstrap-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!--jQuery-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--bootstrap-->
+    <!--popper--><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!--CSS file-->
     <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
+    
     <!-- bootbox code -->
-    <script src="bootbox.min.js"></script>
-    <script src="bootbox.locales.min.js"></script>
-    <!-- js files -->
-    <script type="text/javascript" src="/assets/js/map.js"></script>
-    <script type="text/javascript" src="/assets/js/alert.js"></script>
+    <script type="text/javascript" src="assets/bootbox/bootbox.js"></script>
+    <script type="text/javascript" src="assets/bootbox/bootbox.locales.js"></script>
+     
+    <!-- js file -->
+    <script src="assets/js/map.js"></script>
     
     <title>DreamTrip</title>
 </head>
 <body>
+    <!--alert section-->
+    <script>
+        bootbox.alert("<center><br>Hi Traveller! <br> Welcome to <b>DreamTrip</b>.</center> <br><br> Here you can search for the following categories in several destinations:<ul><li>Accomodation</li><li>Restaurants</li><li>Touristic places</li><li>Transportation</li><li>Healthcare centers</li></ul><br><center>Happy searching!</center>");
+    </script>
+    
     <header>
     <!--bar section-->
         <nav class="navbar bg-navbar">
-            <a href="index.html">
-                <h1 class="navbar-brand">DreamTrip</h1>
-            </a>
+            <img src="/assets/images/logo.png">
+            
             <a class="nav navbar-item" href="#footer-details">
                 <p>Contact</p>
             </a>
@@ -65,11 +70,11 @@
                 </div>
                 <div class="col-sm-3 ">
                     <select class="form-control input-boxes" id="categories" onchange="onPlaceChanged">
-                        <option id="hotelRadio">Accomodation</option>
-                        <option id="foodRadio">Restaurants</option>
-                        <option id="attractionsRadio">Tourist</option>
-                        <option id="transportRadio">Transport</option>
-                        <option id="healthcareRadio">Healthcare</option>
+                        <option value="hotelOption" id="hotelOption">Accomodation</option>
+                        <option value="foodOption" id="foodOption">Restaurants</option>
+                        <option value="attractionsOption" id="attractionsOption">Tourist</option>
+                        <option value="transportOption" id="transportOption">Transport</option>
+                        <option value="healthcareOption" id="healthcareOption">Healthcare</option>
                     </select>
                 </div>
                 <div class="col-sm-3">
@@ -79,12 +84,12 @@
         </div>
     </header>
     
-    <!--map section-->
+    <!--map section
     <section> 
         <div id="map-section" class="container-fluid">
             <div id="map"></div>
         </div>
-    </section>
+    </section>-->
     
     <!--results section-->
     <section id="results-section" class="container-fluid">
@@ -156,8 +161,6 @@
     
     <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASBS-jSJA9k0dC71J01m7b1AE5IbuM9W0&amp;libraries=places&amp;callback=initMap" async="" defer=""></script>
-    
-    
     
 </body>
 </html>

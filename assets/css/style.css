@@ -1,65 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 /*font-family: 'Roboto', sans-serif;*/
 /*------------------------------------------------------Alert box message*/
-#dialogoverlay{
-    display:none;
-    opacity:.8;
-    position: fixed;
-    width:100%;
-    z-index: 10;
-    background:#fff;
-}
-#dialog-box{
-   display: none;
-   position: fixed;
-   border-radius: 7px;
-   width:550px;
-   z-index: 10;
-   background:#000;
-}
-#dialog-box > div{
-   margin:8px;
-   background:#fff;
-}
 
-#dialog-box-head{
-    font-family: "Roboto";
-    color:black;
-    font-size: 20px;
-    padding:10px;
-    background: #666;
-}
-
-#dialog-box-body{
-    color:#fff;
-    padding:20px;
-    background: #333;
-}
-
-#dialog-box-footer{
-    color:black;
-    font-size: 20px;
-    padding:10px;
-    background-color: red;
-    text-align: right;
-    background: #666;
-}
 
 /*------------------------------------------------------Navbar section*/
 .bg-navbar{
     background-color: #1d0a2f;
-    border: 15px;
+    padding: 0;
 }
 
-.navbar-brand, .navbar-light {
-    font-family: 'Roboto';
-    padding-left: 5px;
-    font-size:30px;
-    font-weight: 800;
-    color:#d60651;
+img {
+    height:150px;
+    width: 150px;
+    padding-left: 10px;
 }
 .navbar-item{
-    font-family: sans-serif;
+    letter-spacing: 0.5px;
     padding-right:25px;
     font-size: 20px;
     color: white;
