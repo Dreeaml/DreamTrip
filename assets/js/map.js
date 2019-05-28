@@ -99,9 +99,12 @@ function initMap() {
     places = new google.maps.places.PlacesService(map);
 
     autocomplete.addListener('place_changed', onPlaceChanged);
+     
+    document.getElementById('hotelRadio').addEventListener('change', onPlaceChanged);
     document.getElementById('foodRadio').addEventListener('change', onPlaceChanged); 
-    document.getElementById('hotelRadio').addEventListener('change', onPlaceChanged); 
     document.getElementById('attractionsRadio').addEventListener('change', onPlaceChanged);
+    document.getElementById('transportRadio').addEventListener('change', onPlaceChanged);
+    document.getElementById('healthcareRadio').addEventListener('change', onPlaceChanged);
 
     // Add a DOM event listener to react when the user selects a country.
     document.getElementById('country').addEventListener(
@@ -110,8 +113,8 @@ function initMap() {
 
 // When the user selects a city, get the place details for the city and
 // zoom the map in on the city.
-function onPlaceChanged() {
-    if ($("#hotelRadio"). is (':selected')){
+function onPlaceChanged(event) {
+    if ($("#hotelRadio"). is (':checked')){
         var place = autocomplete.getPlace();
         if (place.geometry) {
           map.panTo(place.geometry.location);
@@ -121,7 +124,7 @@ function onPlaceChanged() {
           document.getElementById('autocomplete').placeholder = 'Enter a city';
         }
     }
-    else if ($("#foodRadio"). is (':selected')){
+    else if ($("#foodRadio"). is (':checked')){
         var place = autocomplete.getPlace();
         if (place.geometry) {
           map.panTo(place.geometry.location);
@@ -131,7 +134,7 @@ function onPlaceChanged() {
           document.getElementById('autocomplete').placeholder = 'Enter a city';
         }
     }
-    else if ($("#attractionsRadio"). is (':selected')){
+    else if ($("#attractionsRadio"). is (':checked')){
         var place = autocomplete.getPlace();
         if (place.geometry) {
           map.panTo(place.geometry.location);
@@ -141,7 +144,7 @@ function onPlaceChanged() {
           document.getElementById('autocomplete').placeholder = 'Enter a city';
         }
     }
-    else if ($("#transportRadio"). is (':selected')){
+    else if ($("#transportRadio"). is (':checked')){
         var place = autocomplete.getPlace();
         if (place.geometry) {
           map.panTo(place.geometry.location);
@@ -196,14 +199,6 @@ function searchHotel() {
     });
 }
 
-function clearMarkers() {
-    for (var i = 0; i < markers.length; i++) {
-      if (markers[i]) {
-        markers[i].setMap(null);
-      }
-    }
-    markers = [];
-  }
  // Search for restaurats in the selected city, within the viewport of the map.
 function searchRestaurant() {
     var search = {
@@ -235,15 +230,6 @@ function searchRestaurant() {
         }
       }
     });
-  }
-
-function clearMarkers() {
-    for (var i = 0; i < markers.length; i++) {
-      if (markers[i]) {
-        markers[i].setMap(null);
-      }
-    }
-    markers = [];
   }
  
  // Search for attractions in the selected city, within the viewport of the map.
@@ -278,16 +264,7 @@ function searchAttraction() {
       }
     });
   }
-
-function clearMarkers() {
-    for (var i = 0; i < markers.length; i++) {
-      if (markers[i]) {
-        markers[i].setMap(null);
-      }
-    }
-    markers = [];
-  }
-
+  
  // Search for transportation in the selected city, within the viewport of the map.
 function searchTransport() {
     var search = {
@@ -319,15 +296,6 @@ function searchTransport() {
         }
       }
     });
-  }
-
-function clearMarkers() {
-    for (var i = 0; i < markers.length; i++) {
-      if (markers[i]) {
-        markers[i].setMap(null);
-      }
-    }
-    markers = [];
   }
   
  // Search for healthcare in the selected city, within the viewport of the map.
@@ -370,7 +338,7 @@ function clearMarkers() {
       }
     }
     markers = [];
-  }
+}
   
 // Set the country restriction based on user input.
 // Also center and zoom the map on the given country.
