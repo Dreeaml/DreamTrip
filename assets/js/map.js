@@ -120,15 +120,14 @@ function search() {
     var categories = document.getElementById("categories").value;
     var search = {
       bounds: map.getBounds(),
-      types: ['categories']
+      types: [categories]
     };
 
     places.nearbySearch(search, function(results, status) {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
             clearResults();
             clearMarkers();
-            // Create a marker for each hotel found, and
-            // assign a letter of the alphabetic to each marker icon.
+            
             for (var i = 0; i < results.length; i++) {
               if (categories == "lodging"){
                   image = "/assets/images/locationIcon.png";
@@ -175,7 +174,7 @@ function search() {
               // in an info window.
               markers[i].placeResult = results[i];
               google.maps.event.addListener(markers[i], 'click', showInfoWindow);
-              setTimeout(dropMarker(i), i * 100);
+              setTimeout(dropMarker(i), i * 10);
               addResult(results[i], i);
             }
         }
@@ -189,6 +188,12 @@ function clearMarkers() {
       }
     }
     markers = [];
+}
+
+function dropMarker(i){
+  return function(){
+    markers[i].setMap(map);
+  };
 }
   
 // Set the country restriction based on user input.
@@ -206,12 +211,6 @@ function setAutocompleteCountry() {
     }
     clearResults();
     clearMarkers();
-  }
-
-function dropMarker(i) {
-    return function() {
-      markers[i].setMap(map);
-    };
   }
 
 function addResult(result, i) {
