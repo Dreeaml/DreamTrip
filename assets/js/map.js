@@ -98,12 +98,6 @@ function initMap() {
     places = new google.maps.places.PlacesService(map);
 
     autocomplete.addListener('place_changed', onPlaceChanged);
-     
-    document.getElementById('hotelOption').addEventListener('change', onPlaceChanged);
-    document.getElementById('foodOption').addEventListener('change', onPlaceChanged); 
-    document.getElementById('attractionsOption').addEventListener('change', onPlaceChanged);
-    document.getElementById('transportOption').addEventListener('change', onPlaceChanged);
-    document.getElementById('healthcareOption').addEventListener('change', onPlaceChanged);
 
     // Add a DOM event listener to react when the user selects a country.
     document.getElementById('country').addEventListener(
@@ -112,65 +106,21 @@ function initMap() {
 
 // When the user selects a city, get the place details for the city and
 // zoom the map in on the city.
-function onPlaceChanged(event) {
-    if ($("#hotelOption").is (':selected')){
-      var place = autocomplete.getPlace();
-      if (place.geometry) {
-        map.panTo(place.geometry.location);
-        map.setZoom(15);
-        searchHotel();
-      } else {
-        document.getElementById('autocomplete').placeholder = 'Enter a city';
-      }
-    }
-    else if ($("#foodOption").is(':selected')){
-      console.log("food is selected")
-        var place = autocomplete.getPlace();
-        if (place.geometry) {
-          map.panTo(place.geometry.location);
-          map.setZoom(15);
-          searchRestaurant();
-        } else {
-          document.getElementById('autocomplete').placeholder = 'Enter a city';
-        }
-    }
-    else if ($("#attractionsOption").is(':selected')){
-      var place = autocomplete.getPlace();
-      if (place.geometry) {
-        map.panTo(place.geometry.location);
-        map.setZoom(15);
-        searchAttraction();
-      } else {
-        document.getElementById('autocomplete').placeholder = 'Enter a city';
-      }
-    }
-    else if ($("#transportOption").is(':selected')){
-        var place = autocomplete.getPlace();
-        if (place.geometry) {
-          map.panTo(place.geometry.location);
-          map.setZoom(15);
-          searchTransport();
-        } else {
-          document.getElementById('autocomplete').placeholder = 'Enter a city';
-        }
-    }
-    else if ($("#healthcareOption").is(':selected')){
-        var place = autocomplete.getPlace();
-        if (place.geometry) {
-          map.panTo(place.geometry.location);
-          map.setZoom(15);
-          searchHealthcare();
-        } else {
-          document.getElementById('autocomplete').placeholder = 'Enter a city';
-        }
-    }
+function onPlaceChanged() {
+  var place = autocomplete.getPlace();
+  if (place.geometry) {
+    map.panTo(place.geometry.location);
+    map.setZoom(15);
+    search();
   }
-
-// Search for hotels in the selected city, within the viewport of the map.
-function searchHotel() {
+}
+   
+// Search for categories in the selected city, within the viewport of the map.
+function search() {
+    var categories = document.getElementById("categories").value;
     var search = {
       bounds: map.getBounds(),
-      types: ['lodging']
+      types: ['categories']
     };
 
     places.nearbySearch(search, function(results, status) {
@@ -180,15 +130,48 @@ function searchHotel() {
             // Create a marker for each hotel found, and
             // assign a letter of the alphabetic to each marker icon.
             for (var i = 0; i < results.length; i++) {
-              var markerLetter = String.fromCharCode('A'.charCodeAt(0) + (i % 26));
-              var markerIcon = MARKER_PATH + markerLetter + '.png';
+              if (categories == "lodging"){
+                  image = "/assets/images/locationIcon.png";
+              }
+              else if (categories == "restaurant"){
+                  image = "/assets/images/locationIcon.png";
+              }
+              else if (categories == "bar"){
+                  image = "/assets/images/locationIcon.png";
+              }
+              else if (categories == "museum"){
+                  image = "/assets/images/locationIcon.png";
+              }
+              else if (categories == "park"){
+                  image = "/assets/images/locationIcon.png";
+              }
+              else if (categories == "shopping_mall"){
+                  image = "/assets/images/locationIcon.png";
+              }
+              else if (categories == "night_club"){
+                  image = "/assets/images/locationIcon.png";
+              }
+               else if (categories == "car_rental"){
+                  image ="/assets/images/locationIcon.png";
+              }
+               else if (categories == "taxi_stand"){
+                  image = "/assets/images/locationIcon.png";
+              }
+              else if (categories == "hospital"){
+                  image = "/assets/images/locationIcon.png";
+              }
+              else if (categories == "pharmacy"){
+                  image = "/assets/images/locationIcon.png";
+              }
+              
+              
               // Use marker animation to drop the icons incrementally on the map.
               markers[i] = new google.maps.Marker({
                 position: results[i].geometry.location,
                 animation: google.maps.Animation.DROP,
-                icon: markerIcon
+                icon: image
               });
-              // If the user clicks a hotel marker, show the details of that hotel
+              // If the user clicks a marker, show the details of that hotel
               // in an info window.
               markers[i].placeResult = results[i];
               google.maps.event.addListener(markers[i], 'click', showInfoWindow);
@@ -198,138 +181,6 @@ function searchHotel() {
         }
     });
 }
-
- // Search for restaurats in the selected city, within the viewport of the map.
-function searchRestaurant() {
-    var search = {
-      bounds: map.getBounds(),
-      types: ['restaurant', 'bar', 'cafe']
-    };
-
-    places.nearbySearch(search, function(results, status) {
-      if (status === google.maps.places.PlacesServiceStatus.OK) {
-        clearResults();
-        clearMarkers();
-        // Create a marker for each hotel found, and
-        // assign a letter of the alphabetic to each marker icon.
-        for (var i = 0; i < results.length; i++) {
-          var markerLetter = String.fromCharCode('A'.charCodeAt(0) + (i % 26));
-          var markerIcon = MARKER_PATH + markerLetter + '.png';
-          // Use marker animation to drop the icons incrementally on the map.
-          markers[i] = new google.maps.Marker({
-            position: results[i].geometry.location,
-            animation: google.maps.Animation.DROP,
-            icon: markerIcon
-          });
-          // If the user clicks a hotel marker, show the details of that hotel
-          // in an info window.
-          markers[i].placeResult = results[i];
-          google.maps.event.addListener(markers[i], 'click', showInfoWindow);
-          setTimeout(dropMarker(i), i * 100);
-          addResult(results[i], i);
-        }
-      }
-    });
-  }
- 
- // Search for attractions in the selected city, within the viewport of the map.
-function searchAttraction() {
-    var search = {
-      bounds: map.getBounds(),
-      types: ['museum', 'park', 'art_gallery', 'shopping_mall', 'night_club']
-    };
-
-    places.nearbySearch(search, function(results, status) {
-      if (status === google.maps.places.PlacesServiceStatus.OK) {
-        clearResults();
-        clearMarkers();
-        // Create a marker for each hotel found, and
-        // assign a letter of the alphabetic to each marker icon.
-        for (var i = 0; i < results.length; i++) {
-          var markerLetter = String.fromCharCode('A'.charCodeAt(0) + (i % 26));
-          var markerIcon = MARKER_PATH + markerLetter + '.png';
-          // Use marker animation to drop the icons incrementally on the map.
-          markers[i] = new google.maps.Marker({
-            position: results[i].geometry.location,
-            animation: google.maps.Animation.DROP,
-            icon: markerIcon
-          });
-          // If the user clicks a hotel marker, show the details of that hotel
-          // in an info window.
-          markers[i].placeResult = results[i];
-          google.maps.event.addListener(markers[i], 'click', showInfoWindow);
-          setTimeout(dropMarker(i), i * 100);
-          addResult(results[i], i);
-        }
-      }
-    });
-  }
-  
- // Search for transportation in the selected city, within the viewport of the map.
-function searchTransport() {
-    var search = {
-      bounds: map.getBounds(),
-      types: ['car_rental', 'airport', 'bus_station','taxi_stand', 'train_station']
-    };
-
-    places.nearbySearch(search, function(results, status) {
-      if (status === google.maps.places.PlacesServiceStatus.OK) {
-        clearResults();
-        clearMarkers();
-        // Create a marker for each hotel found, and
-        // assign a letter of the alphabetic to each marker icon.
-        for (var i = 0; i < results.length; i++) {
-          var markerLetter = String.fromCharCode('A'.charCodeAt(0) + (i % 26));
-          var markerIcon = MARKER_PATH + markerLetter + '.png';
-          // Use marker animation to drop the icons incrementally on the map.
-          markers[i] = new google.maps.Marker({
-            position: results[i].geometry.location,
-            animation: google.maps.Animation.DROP,
-            icon: markerIcon
-          });
-          // If the user clicks a hotel marker, show the details of that hotel
-          // in an info window.
-          markers[i].placeResult = results[i];
-          google.maps.event.addListener(markers[i], 'click', showInfoWindow);
-          setTimeout(dropMarker(i), i * 100);
-          addResult(results[i], i);
-        }
-      }
-    });
-  }
-  
- // Search for healthcare in the selected city, within the viewport of the map.
-function searchHealthcare() {
-    var search = {
-      bounds: map.getBounds(),
-      types: ['hospital', 'pharmacy', 'dentist']
-    };
-
-    places.nearbySearch(search, function(results, status) {
-      if (status === google.maps.places.PlacesServiceStatus.OK) {
-        clearResults();
-        clearMarkers();
-        // Create a marker for each hotel found, and
-        // assign a letter of the alphabetic to each marker icon.
-        for (var i = 0; i < results.length; i++) {
-          var markerLetter = String.fromCharCode('A'.charCodeAt(0) + (i % 26));
-          var markerIcon = MARKER_PATH + markerLetter + '.png';
-          // Use marker animation to drop the icons incrementally on the map.
-          markers[i] = new google.maps.Marker({
-            position: results[i].geometry.location,
-            animation: google.maps.Animation.DROP,
-            icon: markerIcon
-          });
-          // If the user clicks a hotel marker, show the details of that hotel
-          // in an info window.
-          markers[i].placeResult = results[i];
-          google.maps.event.addListener(markers[i], 'click', showInfoWindow);
-          setTimeout(dropMarker(i), i * 100);
-          addResult(results[i], i);
-        }
-      }
-    });
-  }
 
 function clearMarkers() {
     for (var i = 0; i < markers.length; i++) {

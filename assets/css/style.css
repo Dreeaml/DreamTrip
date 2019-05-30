@@ -71,10 +71,6 @@ a:hover {
     font-weight: bold;
 }
 
-#info-content {
-    display: none;
-}
-
 #results-heading{
     background: linear-gradient( #a7a7a7, #ffffff);
     width: 100%;
