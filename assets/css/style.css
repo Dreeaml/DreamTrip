@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 /*font-family: 'Roboto', sans-serif;*/
-/*------------------------------------------------------Alert box message*/
-
 
 /*------------------------------------------------------Navbar section*/
 .bg-navbar{
@@ -25,6 +23,104 @@ img {
 a:hover {
         color: #969498;
     text-decoration: none;
+}
+/*------------------------------------------------------contact form*/
+.open-button {
+    background-color: #443552;
+    color: white;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    width: 60px;
+    height: 50px;
+    margin-right: 50px;
+    border-radius: 5px;
+}
+.far fa-envelope{
+  width: 30px;
+  height: 30px;
+}
+
+.close {
+    position: absolute;
+    font-weight: 900;
+    font-size: xx-large;
+    color: #1d0a2f;
+    top: -8px;
+    right: 1px;
+}
+/* The popup form - hidden by default */
+.form-popup {
+    display: none;
+    position: fixed;
+    bottom: 20%;
+    right: 35%;
+    border: 3px solid #f1f1f1;
+    border-radius: 5px;
+    z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #8dcaff;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #5780a4;
 }
 /*------------------------------------------------------filters section*/
 #filters{
@@ -121,7 +217,7 @@ a:hover {
 }
 /*------------------------------------------------------footer*/
 #footer-details{
-    background: -webkit-linear-gradient( #ffffff, #1d0a2f);
+    background-color: #d6d3d3;
     padding: 0;
     margin: 0;
     min-height: 100px;
@@ -129,24 +225,85 @@ a:hover {
 }
 
 #author-rights{
+    width: 100%;
     text-align: center;
-    color: #ffffff;
+    color: #694b4b;
     font-size: 15px;
     font-family: Roboto;
-    padding-top: 10px;
+    padding-top: 50px;
     font-weight: 500;
 }
-
-#social-links {
-    margin-left: 25%;
+/*------------------------------------------------------media queries*/
+@media screen and (min-width: 320px)and (max-width: 374px){
+  
+  .open-button {
+    margin-right: 30px;}
+    
+  .form-popup {
+    bottom: 20%;
+    right: 15%;}
 }
 
-#social-links span a {
-    font-size: 18px;
-    color:black;
-    margin-left: 10%;
-    transition: all 0.35s, ease-in-out;
-    -moz-transition: all 0.35s, ease-in-out;
-    -webkit-transition: all 0.35s, ease-in-out;
-    -o-transition: all 0.35s, ease-in-out;
+@media screen and (min-width: 375px){
+    .form-popup {
+      bottom: 20%;
+      right: 22%;
+    }
+    .open-button {
+    margin-right: 30px;}
+}
+@media screen and (min-width: 568px){
+    .form-popup {
+      bottom: -15%;
+      right: 30%;
+    }
+}
+
+@media screen and (min-width: 640px) and (max-width: 731px){
+    .form-popup {
+      bottom: 5%;
+      right: 30%;
+    }
+}
+@media screen and (min-width: 667px){
+    .form-popup {
+      bottom: -5%;
+      right: 30%;
+    }
+}
+/*@media screen and (min-width: 734px) and (max-width: 737px){
+    .form-popup {
+      bottom: -10%;
+      right: 30%;
+    }
+}*/
+@media screen and (min-width: 768px) and (max-width:811px){
+    .form-popup {
+      bottom: 20%;
+      right: 35%;
+    }
+}
+@media screen and (min-width: 812px) and (max-width:1023px){
+    .form-popup {
+      bottom: -1%;
+      right: 30%;
+    }
+}
+@media screen and (min-width: 1024px) and (max-width:1030px) {
+    .form-popup {
+      bottom: 60%;
+      right: 40%;
+    }
+}
+@media screen and (min-width: 1366px) and (max-width:1441px){
+    .form-popup {
+      bottom: 50%;
+      right: 40%;
+    }
+}
+@media screen and (min-width: 1450px) and (max-width:2560px){
+    .form-popup {
+      bottom: 60%;
+      right: 40%;
+    }
 }

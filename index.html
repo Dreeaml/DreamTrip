@@ -31,6 +31,13 @@
      
     <!-- js file -->
     <script src="assets/js/map.js"></script>
+    <script type="text/javascript" src="/assets/js/contactform.js"></script>
+    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+    <script type="text/javascript">
+       (function(){
+          emailjs.init("user_sIm9h2G9hoRlzjU4aGWw7");
+       })();
+    </script>
     
     <title>DreamTrip</title>
 </head>
@@ -44,10 +51,17 @@
     <!--bar section-->
         <nav class="navbar bg-navbar">
             <img src="assets/images/logo.png">
-            
-            <a class="nav navbar-item" href="#footer-details">
-                <p>Contact</p>
-            </a>
+            <button class="open-button" onclick="openForm()"><i class="far fa-envelope"></i></button>
+            <div class="form-popup" id="myForm">
+                <span class="close" onclick="closeForm()" >×</span>
+                <form action="/action_page.php" class="form-container" onsubmit="return sendMail(this);" method="POST" id="usrform">
+                    <input type="text" class="inputMod" name="name" required placeholder="Full Name" /><br>
+                    <input type="text" class="inputMod" name="email" required placeholder="Email" /><br>
+                    <textarea rows="5" cols="30" name="comment"
+                    form="usrform" class="textarea" placeholder="Enter your message here" required></textarea><br>
+                    <input type="submit" class="submitContact" value="Get in touch" />
+                </form>
+            </div>
         </nav>
         
     <!--filters section-->
@@ -146,27 +160,7 @@
     <!--footer section-->
     <footer id="footer-details" class="container-fluid">
         <div class="row">
-            <div class="col"></div>
-            <div id="social-links" class="col-6">
-                <span>
-                    <a target="_blank" href="https://www.facebook.com/andrea.maggino.98"><i class="fab fa-facebook-f"></i></a>
-                </span>
-                <span>
-                    <a target="_blank" href="https://www.instagram.com/dreea_ml/?hl=es"><i class="fab fa-instagram"></i></a>
-                </span>
-                <span>
-                    <a target="_blank" href="https://www.linkedin.com/in/andrea-maggino"><i class="fab fa-linkedin-in"></i></a>
-                </span>
-            </div>
-            <div class="col"></div>
-        </div>
-        
-         <div class="row">
-            <div class="col"></div>
-            <div id="author-rights" class="col-6">
-                <p><i class="far fa-copyright"></i> CopyRight 2019: Andrea Maggino</p>
-            </div>
-            <div class="col"></div>
+            <p id="author-rights"><i class="far fa-copyright"></i> CopyRight 2019: Andrea Maggino</p>
         </div>
     </footer>
     
