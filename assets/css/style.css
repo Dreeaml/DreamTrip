@@ -297,13 +297,13 @@ input[type=submit]:hover {
 }
 @media screen and (min-width: 1366px) and (max-width:1441px){
     .form-popup {
-      bottom: 50%;
+      bottom: 30%;
       right: 40%;
     }
 }
 @media screen and (min-width: 1450px) and (max-width:2560px){
     .form-popup {
-      bottom: 60%;
+      bottom: 30%;
       right: 40%;
     }
 }
