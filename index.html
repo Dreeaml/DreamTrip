@@ -42,26 +42,46 @@
     <title>DreamTrip</title>
 </head>
 <body>
-    <!--alert section-->
-    <script>
-        bootbox.alert("<center><br>Hi Traveller! <br> Welcome to <b>DreamTrip</b>.</center> <br><br> Here you can search for the following categories in several destinations:<ul><li>Accomodation</li><li>Restaurants</li><li>Touristic places</li><li>Transportation</li><li>Healthcare centers</li></ul><br><center>Let's plan your next trip!</center>");
-    </script>
-    
     <header>
     <!--bar section-->
         <nav class="navbar bg-navbar">
-            <img src="assets/images/logo.png">
-            <button class="open-button" onclick="openForm()"><i class="far fa-envelope"></i></button>
-            <div class="form-popup" id="myForm">
-                <span class="close" onclick="closeForm()" >×</span>
-                <form action="/action_page.php" class="form-container" onsubmit="return sendMail(this);" method="POST" id="usrform">
-                    <input type="text" class="inputMod" name="name" required placeholder="Full Name" /><br>
-                    <input type="text" class="inputMod" name="email" required placeholder="Email" /><br>
-                    <textarea rows="5" cols="30" name="comment"
-                    form="usrform" class="textarea" placeholder="Enter your message here" required></textarea><br>
-                    <input type="submit" class="submitContact" value="Get in touch" />
-                </form>
+            <div class="col-6">
+                <img src="assets/images/logo.png">
             </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <button id="myBtn"><i class="fas fa-info"></i></button>
+                    <div id="myModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <h2>Hi Traveller! <br> Welcome to <b>DreamTrip.</b></h2>
+                            <p>Here you can search for the following categories in several destinations:
+                                <ul>
+                                    <li>Accomodation</li>
+                                    <li>Restaurants</li>
+                                    <li>Touristic places</li>
+                                    <li>Transportation</li>
+                                    <li>Healthcare centers</li>
+                                </ul>
+                            </p>
+                            <p>Let's plan your next trip!</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <button class="open-button" onclick="openForm()"><i class="far fa-envelope"></i></button>
+                    <div class="form-popup" id="myForm">
+                        <span class="close" onclick="closeForm()" >×</span>
+                        <form action="/action_page.php" class="form-container" onsubmit="return sendMail(this);" method="POST" id="usrform">
+                            <input type="text" class="inputMod" name="name" required placeholder="Full Name" /><br>
+                            <input type="text" class="inputMod" name="email" required placeholder="Email" /><br>
+                            <textarea rows="5" cols="30" name="comment"
+                            form="usrform" class="textarea" placeholder="Enter your message here" required></textarea><br>
+                            <input type="submit" class="submitContact" value="Get in touch" />
+                        </form>
+                    </div>
+                </li>
+            </ul>
         </nav>
         
     <!--filters section-->
@@ -112,48 +132,62 @@
         </div>
     </header>
     
-    <!--map section-->
+    <!--map & result section-->
     <section> 
-        <div id="map-section" class="container-fluid">
-            <div id="map"></div>
-        </div>
-    </section>
-    
-    <!--results section-->
-    <section id="results-section" class="container-fluid">
-        <div class="row">
-            <h2 id="results-heading">Results list</h2>
-        </div>
-        <div id="listing">
-            <table id="resultsTable">
-                <tbody id="results"></tbody>
-            </table>
-        </div>
-        <div style="display:none">
-            <div id="info-content">
-            <table>
-              <tr id="iw-url-row" class="iw_table_row">
-                <td id="iw-icon" class="iw_table_icon"></td>
-                <td id="iw-url"></td>
-              </tr>
-              <tr id="iw-address-row" class="iw_table_row">
-                <td class="iw_attribute_name">Address:</td>
-                <td id="iw-address"></td>
-              </tr>
-              <tr id="iw-phone-row" class="iw_table_row">
-                <td class="iw_attribute_name">Telephone:</td>
-                <td id="iw-phone"></td>
-              </tr>
-              <tr id="iw-rating-row" class="iw_table_row">
-                <td class="iw_attribute_name">Rating:</td>
-                <td id="iw-rating"></td>
-              </tr>
-              <tr id="iw-website-row" class="iw_table_row">
-                <td class="iw_attribute_name">Website:</td>
-                <td id="iw-website"></td>
-              </tr>
-            </table>
-        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div id="map-section" class="col-xs-12 col-sm-8 col-md-8 ">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3 id="section-heading">Map</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                           <div id="map"></div> 
+                        </div>
+                    </div>
+                </div>
+                <div id="results-section" class="col-xs-12 col-sm-4 col-md-4">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3 id="section-heading">Results</h3>
+                        </div>
+                    </div>
+                    <div id="listing">
+                        <table id="resultsTable">
+                            <tbody id="results"></tbody>
+                        </table>
+                    </div>
+                    <div style="display:none">
+                        <div id="info-content">
+                        <table>
+                          <tr id="iw-url-row" class="iw_table_row">
+                            <td id="iw-icon" class="iw_table_icon"></td>
+                            <td id="iw-url"></td>
+                          </tr>
+                          <tr id="iw-address-row" class="iw_table_row">
+                            <td class="iw_attribute_name">Address:</td>
+                            <td id="iw-address"></td>
+                          </tr>
+                          <tr id="iw-phone-row" class="iw_table_row">
+                            <td class="iw_attribute_name">Telephone:</td>
+                            <td id="iw-phone"></td>
+                          </tr>
+                          <tr id="iw-rating-row" class="iw_table_row">
+                            <td class="iw_attribute_name">Rating:</td>
+                            <td id="iw-rating"></td>
+                          </tr>
+                          <tr id="iw-website-row" class="iw_table_row">
+                            <td class="iw_attribute_name">Website:</td>
+                            <td id="iw-website"></td>
+                          </tr>
+                        </table>
+                    </div>
+                    
+                </div>
+                </div>
+            </div>
         </div>
     </section>
     
@@ -172,4 +206,6 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASBS-jSJA9k0dC71J01m7b1AE5IbuM9W0&amp;libraries=places&amp;callback=initMap" async="" defer=""></script>
     
 </body>
+<script type="text/javascript" src="assets/js/infomodal.js"></script>
+
 </html>

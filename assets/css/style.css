@@ -2,15 +2,23 @@
 /*font-family: 'Roboto', sans-serif;*/
 
 /*------------------------------------------------------Navbar section*/
+.navbar-nav {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: row;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
 .bg-navbar{
     background-color: #1d0a2f;
-    padding: 0;
 }
 
 img {
     height:150px;
     width: 150px;
-    padding-left: 10px;
 }
 .navbar-item{
     letter-spacing: 0.5px;
@@ -24,6 +32,63 @@ a:hover {
         color: #969498;
     text-decoration: none;
 }
+/*------------------------------------------------------Information modal*/
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  text-align:center;
+  background-color: #e9ecef;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%;
+  font-size: 15px;
+  font-family: Roboto;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.fas fa-info{
+  width: 30px;
+  height: 30px;
+}
+#myBtn{
+  background-color: #443552;
+  color: white;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  width: 60px;
+  height: 50px;
+  margin-right: 20px;
+  border-radius: 5px;
+}
+
 /*------------------------------------------------------contact form*/
 .open-button {
     background-color: #443552;
@@ -152,39 +217,38 @@ input[type=submit]:hover {
    height: 50px;
 }
 /*------------------------------------------------------map section*/
+
 #map {
-    min-height: 430px;
-    padding: 0;
+  min-height: 430px;
 }
 #map-section{ 
-    background: -webkit-linear-gradient(#1d0a2f, #a7a7a7);
-    background: -moz-linear-gradient(#1d0a2f, #a7a7a7);
-    background: -o-linear-gradient(#1d0a2f, #a7a7a7);
-    background: linear-gradient(#1d0a2f, #a7a7a7);
+  border-right: 1px solid #d0d0d0;
+}
+#section-heading{
+  width: 100%;
+  color: #4b4b4b;
+  text-align: center;
+  font-family: 'Roboto';
+  font-size: 25px;
+  font-weight: 800;
+  padding-bottom: 5px;
+  padding-top:15px;
 }
 /*------------------------------------------------------results section*/
-#info-content .title {
-    font-weight: bold;
+#results-section{
+ background-color: #d6d3d345;
 }
-
-#results-heading{
-    background: linear-gradient( #a7a7a7, #ffffff);
-    width: 100%;
-    color: #4b4b4b;
-    text-align: center;
-    font-family: 'Roboto';
-    font-size: 25px;
-    font-weight: 800;
-    padding-bottom: 5px;
-    padding-top:15px;
+#info-content .title {
+  font-weight: bold;
 }
 
 #listing{
-    margin-bottom: 25px;
-    width: 100%;
-    overflow: auto;
-    top: 0px;
-    cursor: pointer;
+  margin-bottom: 25px;
+  height: 430px;
+  width: 100%;
+  overflow: scroll;
+  top: 0px;
+  cursor: pointer;
 }
 .placeIcon {
   width: 20px;
